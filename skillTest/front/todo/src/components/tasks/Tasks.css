@@ -1,0 +1,8 @@
+.myClass {
+  display: flex;
+  justify-content: space-between;
+}
+
+.deleteColor {
+  background: rgba(196, 8, 8, 0.897);
+}
