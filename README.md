@@ -26,9 +26,33 @@ We are in a virtual env now we can install the Django and the node_module depend
 pip3 install django | pip install django
 ```
 
-Now we can move to the follo path:
+#### Install rest_framework
 
 ```
+pip3 install djangorestframework | pip install djangorestframework
+```
+
+
+Don't forget add this line in de setting.py file of Django project:
+
+```
+INSTALLED_APPS = {
+
+    ...
+    'rest_framework',
+}
+```
+
+By last we'll create Django's superuser:
+
+```
+./manage.py createsuperuser
+```
+
+
+Now we can move to the following path:
+
+
 ~/ensolvers/skillTest/back/abm
 
 ```
@@ -40,6 +64,8 @@ python manage.py runserver
 ```
 
 Perfect you just ran the backend server!
+
+
 
 After this, in a new terminal we'll move to:
 
