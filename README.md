@@ -34,21 +34,21 @@ pip3 install djangorestframework | pip install djangorestframework
 
 
 
-By last we'll create Django's superuser:
+By last we'll create Django's superuser: 
 
 ```
-./manage.py createsuperuser
+ ~/ensolvers/skillTest/back/abm
+```
+
+Run:
+
+```
+ python manage.py createsuperuser
 ```
 
 
-Now we can move to the following path:
+Now in the same path excute
 
-
-~/ensolvers/skillTest/back/abm
-
-```
-
-From there excute:
 
 ```
 python manage.py runserver
