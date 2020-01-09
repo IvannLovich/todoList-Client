@@ -33,15 +33,6 @@ pip3 install djangorestframework | pip install djangorestframework
 ```
 
 
-Don't forget add this line in de setting.py file of Django project:
-
-```
-INSTALLED_APPS = {
-
-    ...
-    'rest_framework',
-}
-```
 
 By last we'll create Django's superuser:
 
