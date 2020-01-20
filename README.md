@@ -4,7 +4,7 @@ This is the skill test for developer positions in Ensolvers.
 
 ### Considerations
 
-Ours recomendations is you create a Python' virtual enviroment one so you shouldn't install all libraries localy. The application has to folder, "back" where is the backend and "front" where is the user interface
+Ours recomendations is you create a Python' virtual enviroment so you shouldn't install all libraries localy. The application has to folder, "back" where is the backend and "front" where is the user interface
 
 - For install the virtual enviroment execute in a terminal:
 
