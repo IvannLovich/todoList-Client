@@ -33,14 +33,7 @@ class App extends Component {
       .post('http://localhost:8000/api/todo/tasks/', item)
       .then(res => this.refreshList());
   };
-  addTask = todo => {
-    // let a = {id: 3, title:todo}
-    let tasks = [...this.state.todoList, todo];
-    console.log('ahora escribo', tasks);
-    this.setState({
-      todoList: tasks,
-    });
-  };
+  
 
   render() {
     return (
