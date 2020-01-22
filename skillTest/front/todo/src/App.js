@@ -4,21 +4,18 @@ import Form from './components/form/Form';
 import axios from 'axios';
 
 class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
+  state = {
       todoList: [],
-    };
-  }
+  };
 
   componentDidMount() {
     this.refreshList();
   }
+
   refreshList = () => {
     axios
       .get('http://localhost:8000/api/todo/tasks')
-      .then(res => this.setState({ todoList: res.data }))
+      .then(res => this.setState(state => ({...state, todoList: res.data})))
       .catch(err => console.log(err));
   };
 
@@ -31,7 +28,7 @@ class App extends Component {
   handleSubmit = item => {
     axios
       .post('http://localhost:8000/api/todo/tasks/', item)
-      .then(res => this.refreshList());
+      .then(res => this.refreshList())
   };
   
 
