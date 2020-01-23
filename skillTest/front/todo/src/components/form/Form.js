@@ -12,6 +12,9 @@ class Form extends Component {
     e.preventDefault();
     this.props.add(this.state);
     e.target.reset();
+    this.setState({
+      title: '',
+    });
   };
 
   render() {
