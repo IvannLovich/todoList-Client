@@ -10,7 +10,7 @@ const App = () => {
     
   useEffect(() => {
     axios
-      .get('http://localhost:8000/api/todo/tasks')
+      .get('https://djanguno.herokuapp.com/api/todo/tasks/')
       .then(res => setTodoList(res.data))
       .catch(err => console.log(err));
   },[])
@@ -19,13 +19,13 @@ const App = () => {
   const deleteTask = item => {
     const erased = setTodoList(todoList.filter(el => el !== item))
     axios
-      .delete(`http://localhost:8000/api/todo/tasks/${item.id}/`)
+      .delete(`https://djanguno.herokuapp.com/api/todo/tasks/${item.id}/`)
       .then(res => erased);
   };
 
   const submit = item => {
     axios
-      .post('http://localhost:8000/api/todo/tasks/', item)
+      .post('https://djanguno.herokuapp.com/api/todo/tasks/', item)
       .then(res => setTodoList([...todoList, item]));
 
   };
