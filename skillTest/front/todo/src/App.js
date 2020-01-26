@@ -25,17 +25,32 @@ const App = () => {
 
   const submit = item => {
     axios
-      .post('https://djanguno.herokuapp.com/api/todo/tasks/', item)
-      .then(res => setTodoList([...todoList, item]));
-
+      .post('https://djanguno.herokuapp.com/api/todo/tasks/', {
+        method: 'post',
+        title: item,
+        completed: false,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'omit',
+      })
+      .then(res => setTodoList([...todoList, item ]));
+      // .then(res => console.log(res));
   };
+  
 
+  console.log(todoList);
+  
+
+  
   
 
   return (
     <div className="todo-app container">
       <h2 className="center blue-text">Listado de tareas</h2>
-      <Tasks tasks={todoList} del={deleteTask}/>
+      <Tasks
+      tasks={todoList} 
+      del={deleteTask}/>
       <Form saveTask={submit} />
     </div>
   );
