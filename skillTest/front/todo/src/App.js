@@ -23,51 +23,18 @@ const App = () => {
       .then(res => erased);
   };
 
-  // const submit = item => {
-
-  //   fetch("https://djanguno.herokuapp.com/api/todo/tasks/", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({
-  //       title: item,
-  //     }) 
-  //   })
-  //     .then(res => {
-  //       res.json();
-  //     })
-  //     .then(data => console.log(data))  // ur data is here
-  //     .catch(err => console.log("api Erorr: ", err));
-  // }
-
   const submit = item => {
     axios
       .post('https://djanguno.herokuapp.com/api/todo/tasks/', {
         title: item,
-        headers: {
-          "Content-Type": "application/json"
-        },
       })
-      .then(res => console.log(res.data)
-      );
-      // .then(res => console.log(res));
+      .then(res => {
+        const element = res.data
+        setTodoList([...todoList, element])
+      });
 
   };
 
-  // const submit = (e) =>{
-  //   // e.preventDefault();
-  //   const njew = {
-  //     id: this.state.id,
-  //     title: this.state.title,
-  //     completed: this.state.completed,
-  //   }
-  //   axios
-  //     .post('https://djanguno.herokuapp.com/api/todo/tasks/', njew)
-  //     .then(res => console.log(res.data));
-
-  // }
-  
 
   return (
     <div className="todo-app container">
