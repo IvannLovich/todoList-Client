@@ -11,7 +11,10 @@ const App = () => {
   useEffect(() => {
     axios
       .get('https://djanguno.herokuapp.com/api/todo/tasks/')
-      .then(res => setTodoList(res.data))
+      .then(res => {
+        setTodoList(res.data)
+        console.log(res.data);
+      })
       .catch(err => console.log(err));
   },[])
   
@@ -34,12 +37,52 @@ const App = () => {
       });
 
   };
+  
+
+  const changeStatusToTrue = item => {
+    // console.log(item.completed = true)
+    axios
+      .put(`https://djanguno.herokuapp.com/api/todo/tasks/${item.id}/`, {
+        title: item.title,
+        completed: true
+      })
+      .then(res => res.data
+        // let status = res.data.completed 
+        // let p = comp.completed;
+        // let change = {...todoList, [completed]: true};
+        // setTodoList({...todoList, comp})
+
+      );
+  }
+
+
+  const changeStatusToFalse = item => {
+    // console.log(item.completed = true)
+    axios
+      .put(`https://djanguno.herokuapp.com/api/todo/tasks/${item.id}/`, {
+        title: item.title,
+        completed: false
+      })
+      .then(res => res.data
+        // let status = res.data.completed 
+        // let p = comp.completed;
+        // let change = {...todoList, [completed]: true};
+        // setTodoList({...todoList, comp})
+
+      );
+  }
+
+  // console.log(todoList);
+  
+
 
 
   return (
     <div className="todo-app container">
       <h2 className="center blue-text">Listado de tareas</h2>
       <Tasks
+      changeToTrue={changeStatusToTrue}
+      changeToFalse={changeStatusToFalse}
       tasks={todoList} 
       del={deleteTask}/>
       <Form saveTask={submit} />

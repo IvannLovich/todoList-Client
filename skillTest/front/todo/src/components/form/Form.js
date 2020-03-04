@@ -4,6 +4,7 @@ import './Form.css';
 const Form = ({ saveTask }) => {
 
   const [value, setValue] = useState('')
+  const [oneTask] = useState([])
 
   // handleChange = e => {
   //   this.setState({
@@ -14,7 +15,8 @@ const Form = ({ saveTask }) => {
   const handleSubmit = e => {
     e.preventDefault()
     saveTask(value)
-    setValue("");
+    e.target.reset()
+    // setValue("");
   };
 
   return (
@@ -23,7 +25,7 @@ const Form = ({ saveTask }) => {
         <label>Escribe una tarea</label>
         <input 
         type="text" 
-        value={value}
+        value={oneTask ? oneTask.title : value}
         onChange={e => setValue(e.target.value)}
         />
         <button
