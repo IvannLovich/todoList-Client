@@ -6,17 +6,10 @@ const Form = ({ saveTask }) => {
   const [value, setValue] = useState('')
   const [oneTask] = useState([])
 
-  // handleChange = e => {
-  //   this.setState({
-  //     title: e.target.value,
-  //   });
-  // };
-
   const handleSubmit = e => {
     e.preventDefault()
     saveTask(value)
-    e.target.reset()
-    // setValue("");
+    setValue(e.target.reset())
   };
 
   return (
