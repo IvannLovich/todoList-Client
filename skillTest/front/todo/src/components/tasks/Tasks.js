@@ -1,13 +1,21 @@
 import React from 'react';
 import './Tasks.css';
 
-const Tasks = ({ tasks, del }) => {
+const Tasks = ({ tasks, del, change }) => {
   const tds = tasks.length ? (
     tasks.map(element => {
       return (
         <div className="collection-item myClass" key={element.id}>
           <span>{element.title}</span>
           <span>
+            <button
+              type="button"
+              onClick={() => {
+                change(element);
+              }}
+            >
+              change
+            </button>
             <button
               type="button"
               className="waves-effect waves-light btn-small"

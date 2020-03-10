@@ -4,20 +4,20 @@ import Form from './components/form/Form';
 import axios from 'axios';
 
 const App = () => {
-  
-  const [todoList, setTodoList] = useState([])
+  const [todoList, setTodoList] = useState([]);
 
-    
   useEffect(() => {
     axios
       .get('https://djanguno.herokuapp.com/api/todo/tasks/')
-      .then(res => setTodoList(res.data))
+      .then(res => {
+        console.log(res.data);
+        setTodoList(res.data);
+      })
       .catch(err => console.log(err));
-  },[])
-  
+  }, []);
 
   const deleteTask = item => {
-    const erased = setTodoList(todoList.filter(el => el !== item))
+    const erased = setTodoList(todoList.filter(el => el !== item));
     axios
       .delete(`https://djanguno.herokuapp.com/api/todo/tasks/${item.id}/`)
       .then(res => erased);
@@ -25,20 +25,34 @@ const App = () => {
 
   const submit = item => {
     axios
-      .post('https://djanguno.herokuapp.com/api/todo/tasks/', item)
-      .then(res => setTodoList([...todoList, item]));
-
+      .post('https://djanguno.herokuapp.com/api/todo/tasks/', {
+        title: item,
+      })
+      .then(res => {
+        const element = res.data;
+        setTodoList([...todoList, element]);
+      });
   };
 
-  
+  const changeStatus = item => {
+    axios
+      .put(`https://djanguno.herokuapp.com/api/todo/tasks/${item.id}/`, {
+        title: item.title,
+        completed: item.title,
+      })
+      .then(res => {
+        setTodoList(prevState => ({ ...prevState, [completed]: true }));
+      });
+    console.log(todoList);
+  };
 
   return (
     <div className="todo-app container">
       <h2 className="center blue-text">Listado de tareas</h2>
-      <Tasks tasks={todoList} del={deleteTask}/>
+      <Tasks tasks={todoList} del={deleteTask} change={changeStatus} />
       <Form saveTask={submit} />
     </div>
   );
-}
+};
 
 export default App;
