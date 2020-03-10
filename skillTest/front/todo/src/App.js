@@ -11,7 +11,6 @@ const App = () => {
       .get('https://djanguno.herokuapp.com/api/todo/tasks/')
       .then(res => {
         console.log(res.data);
-        setTodoList(res.data);
       })
       .catch(err => console.log(err));
   }, []);
@@ -34,22 +33,33 @@ const App = () => {
       });
   };
 
-  const changeStatus = item => {
+  const changeStatusToTrue = item => {
     axios
       .put(`https://djanguno.herokuapp.com/api/todo/tasks/${item.id}/`, {
         title: item.title,
-        completed: item.title,
+        completed: true,
       })
-      .then(res => {
-        setTodoList(prevState => ({ ...prevState, [completed]: true }));
-      });
-    console.log(todoList);
+      .then(res => res.data);
+  };
+
+  const changeStatusToFalse = item => {
+    axios
+      .put(`https://djanguno.herokuapp.com/api/todo/tasks/${item.id}/`, {
+        title: item.title,
+        completed: false,
+      })
+      .then(res => res.data);
   };
 
   return (
     <div className="todo-app container">
       <h2 className="center blue-text">Listado de tareas</h2>
-      <Tasks tasks={todoList} del={deleteTask} change={changeStatus} />
+      <Tasks
+        changeToTrue={changeStatusToTrue}
+        changeToFalse={changeStatusToFalse}
+        tasks={todoList}
+        del={deleteTask}
+      />
       <Form saveTask={submit} />
     </div>
   );

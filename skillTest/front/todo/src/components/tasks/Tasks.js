@@ -1,21 +1,26 @@
 import React from 'react';
 import './Tasks.css';
 
-const Tasks = ({ tasks, del, change }) => {
+const Tasks = ({ tasks, del, changeToTrue, changeToFalse }) => {
   const tds = tasks.length ? (
-    tasks.map(element => {
+    tasks.map((element, index) => {
+      const status =
+        element.completed === false ? (
+          <label onClick={() => changeToTrue(element)}>
+            <input type="checkbox" />
+            <span></span>
+          </label>
+        ) : (
+          <label onClick={() => changeToFalse(element)}>
+            <input type="checkbox" defaultChecked />
+            <span></span>
+          </label>
+        );
       return (
         <div className="collection-item myClass" key={element.id}>
+          {status}
           <span>{element.title}</span>
           <span>
-            <button
-              type="button"
-              onClick={() => {
-                change(element);
-              }}
-            >
-              change
-            </button>
             <button
               type="button"
               className="waves-effect waves-light btn-small"
