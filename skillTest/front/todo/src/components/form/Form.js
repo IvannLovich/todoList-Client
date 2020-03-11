@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import './Form.css';
 
-const Form = ({ saveTask }) => {
+const Form = ({ saveTask, edit, task }) => {
 
   const [value, setValue] = useState('')
-  const [oneTask] = useState([])
-
+ 
   const handleSubmit = e => {
     e.preventDefault()
     saveTask(value)
     setValue(e.target.reset())
   };
 
+  // const result = 
+  
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>Escribe una tarea</label>
+        <label>Escribe la tarea</label>
         <input 
-        type="text" 
-        value={oneTask ? oneTask.title : value}
+        type="text"
+        defaultValue={task !== [] ? task.title : value}
         onChange={e => setValue(e.target.value)}
         />
         <button
