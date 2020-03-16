@@ -11,8 +11,11 @@ const App = () => {
       .get('https://djanguno.herokuapp.com/api/todo/tasks/')
       .then(res => {
         console.log(res.data);
+        const state = res.data;
+        setTodoList(state);
       })
       .catch(err => console.log(err));
+    // console.log(res.data);
   }, []);
 
   const deleteTask = item => {
