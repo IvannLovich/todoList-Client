@@ -1,9 +1,9 @@
 import React from 'react';
 import './Tasks.css';
 
-const Tasks = ({ tasks, del, changeToTrue, changeToFalse }) => {
+const Tasks = ({ tasks, del, changeToTrue, changeToFalse, singleTask }) => {
   const tds = tasks.length ? (
-    tasks.map((element, index) => {
+    tasks.map(element => {
       const status =
         element.completed === false ? (
           <label onClick={() => changeToTrue(element)}>
@@ -24,6 +24,9 @@ const Tasks = ({ tasks, del, changeToTrue, changeToFalse }) => {
             <button
               type="button"
               className="waves-effect waves-light btn-small"
+              onClick={() => {
+                singleTask(element);
+              }}
             >
               edit
             </button>
