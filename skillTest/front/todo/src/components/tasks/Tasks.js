@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import Form from '../form/Form'
+import { getAll, add, changeToTrue, changeToFalse, deleteAllTasks } from '../../Api'
 import './Tasks.css';
 
-const Tasks = ({ tasks, del, changeToTrue, changeToFalse, singleTask }) => {
-  const tds = tasks.length ? (
-    tasks.map((element) => {
+
+const Tasks = () => {
+
+  const [todoList, setTodoList] = useState([])
+  // const [single, setSingle] = useState(false)
+  const [value, setValue] = useState('')
+
+
+          
+  useEffect(() => {
+    getAll(setTodoList);
+  },[])
+  
+  
+  const submit = () => {
+    add(value, setTodoList, todoList)
+  };
+  
+
+  const tds = todoList.length ? (
+    todoList.map(element => { 
       const status = element.completed === false ? (
         <label
           onClick={() => changeToTrue(element)}>
@@ -22,22 +43,19 @@ const Tasks = ({ tasks, del, changeToTrue, changeToFalse, singleTask }) => {
           {status}
           <span>{element.title}</span>
           <span>
+          <Link to={`/${element.id}`}>
             <button
               type="button"
-              className="waves-effect waves-light btn-small"
-              onClick={() => {
-                singleTask(element);
-              }}
-            >
+              className="waves-effect waves-light btn-small editColor">
               edit
             </button>
+          </Link>
             <button
               type="button"
               className="waves-effect waves-light btn-small deleteColor"
               onClick={() => {
-                del(element);
-              }}
-            >
+                deleteAllTasks(element, setTodoList, todoList, setValue);
+              }}>
               delete
             </button>
           </span>
@@ -47,7 +65,18 @@ const Tasks = ({ tasks, del, changeToTrue, changeToFalse, singleTask }) => {
   ) : (
     <p className="center"> No hay tareas cargadas </p>
   );
-  return <div className="todos collection">{tds}</div>;
+  return (
+    <div className="todo-app container">
+      <div className="todos collection">
+        {tds}
+      </div>
+        <Form
+          val={value} 
+          setVal={setValue}
+          saveTask={submit}
+        />
+    </div>
+  );
 };
 
 export default Tasks;
