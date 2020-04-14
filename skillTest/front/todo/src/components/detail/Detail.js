@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { getSingle, deleteSingleTask, editSingleTask } from '../../Api'
 import Form from '../form/Form'
 
@@ -9,23 +10,23 @@ const Detail = props => {
   const [value, setValue] = useState(single.title)
   const detail = useState(true)
 
-  
+    
   const { id } = props.match.params
   const { title, completed } = single
   
+  let history = useHistory()
+
+
   useEffect(() => {
     getSingle(id, setSingle)
   },'')
 
   
   const goBack = () => {
-    props.history.push('/');
+    history.goBack();
   }
 
-  const deleteTask = () => {
-    deleteSingleTask(single)
-  };
-
+  
   const edit = () => {
     editSingleTask(single, value, setSingle)
   }
@@ -54,7 +55,7 @@ const Detail = props => {
                 <button
                     type="button"
                     className="waves-effect waves-light btn-small deleteColor"
-                    onClick={() => {deleteTask(single); goBack()}}>
+                    onClick={() => {deleteSingleTask(single); goBack()}}>
                     delete
                 </button>
                 </span>

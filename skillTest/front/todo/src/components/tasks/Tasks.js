@@ -12,7 +12,7 @@ const Tasks = () => {
   const [value, setValue] = useState('')
 
 
-          
+
   useEffect(() => {
     getAll(setTodoList);
   },[])
