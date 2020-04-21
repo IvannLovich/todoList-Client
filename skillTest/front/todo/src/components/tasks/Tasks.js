@@ -8,7 +8,6 @@ import './Tasks.css';
 const Tasks = () => {
 
   const [todoList, setTodoList] = useState([])
-  // const [single, setSingle] = useState(false)
   const [value, setValue] = useState('')
 
 
