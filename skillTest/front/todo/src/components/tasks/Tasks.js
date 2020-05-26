@@ -14,7 +14,7 @@ const Tasks = () => {
 
   useEffect(() => {
     getAll(setTodoList);
-  },[])
+  },[todoList])
   
   
   const submit = () => {
