@@ -1,3 +1,13 @@
-.buttonColor {
+.createBtn {
   background: rgb(86, 125, 211);
+}
+
+
+.btnColor {
+  background: rgb(77, 129, 72);
+}
+
+
+.cancelBtnColor {
+  background: rgba(196, 8, 8, 0.897);
 }

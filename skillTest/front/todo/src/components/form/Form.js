@@ -1,34 +1,72 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Form.css';
 
-const Form = ({ saveTask, edit, task }) => {
+const Form = ({ 
+  val, 
+  setVal, 
+  saveTask, 
+  isDetail, 
+  setSingleValue, 
+  singleTitle, 
+  editSingle, 
+  mainPage, 
+  singleTask }) => {
 
-  const [value, setValue] = useState('')
- 
+
   const handleSubmit = e => {
     e.preventDefault()
-    saveTask(value)
-    setValue(e.target.reset())
+    saveTask(val)
+    setVal(e.target.reset())
   };
 
-  // const result = 
+  const handleEdit = e => {
+    e.preventDefault()
+    setSingleValue(e.target.reset())
+  };
+
+  const form = isDetail ? (
+    <form onSubmit={handleEdit}>
+          <label>Edit</label>
+          <input 
+          type="text"
+          defaultValue={singleTitle}
+          onChange={e => setSingleValue(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="waves-effect waves-light btn btnColor"
+            onClick={() => { mainPage(); editSingle(singleTask) }}>
+            Save
+          </button>
+          <button
+            type="submit"
+            className="waves-effect waves-light btn cancelBtnColor"
+            onClick={() => { mainPage() }}>
+            Cancel
+          </button>
+    </form>
+  ) : (
+    <form onSubmit={handleSubmit}>
+          <label>Write a task</label>
+          <input 
+          type="text"
+          defaultValue={val}
+          onChange={e => setVal(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="waves-effect waves-light btn createBtn">
+            Create
+          </button>
+    </form>
+  )
+
+ 
+
   
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label>Escribe la tarea</label>
-        <input 
-        type="text"
-        defaultValue={task !== [] ? task.title : value}
-        onChange={e => setValue(e.target.value)}
-        />
-        <button
-          type="submit"
-          className="waves-effect waves-light btn buttonColor"
-        >
-          Crear tarea
-        </button>
-      </form>
+      {form}
     </div>
   );
 }
