@@ -6,7 +6,7 @@ import {
   add,
   changeToTrue,
   changeToFalse,
-  deleteAllTasks,
+  deleteTask,
 } from '../../Api';
 import './Tasks.css';
 
@@ -53,7 +53,7 @@ const Tasks = () => {
               type="button"
               className="waves-effect waves-light btn-small deleteColor"
               onClick={() => {
-                deleteAllTasks(element, setTodoList, todoList, setValue);
+                deleteTask(element, setTodoList, todoList, setValue);
               }}
             >
               delete
