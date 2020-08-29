@@ -1,4 +1,3 @@
-import axios from 'axios';
 import * as types from './constants';
 
 export const showTasks = () => async (dispatch) => {
