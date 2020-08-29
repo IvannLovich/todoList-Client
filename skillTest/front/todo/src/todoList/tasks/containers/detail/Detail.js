@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { getSingle, deleteSingleTask, editSingleTask } from '../../Api';
-import Form from '../form/Form';
+// import { getSingle, deleteSingleTask, editSingleTask } from '../../Api';
+// import Form from '../../components/form/Form';
 
 const Detail = (props) => {
   const [single, setSingle] = useState('');
@@ -14,7 +14,7 @@ const Detail = (props) => {
   let history = useHistory();
 
   useEffect(() => {
-    getSingle(id, setSingle);
+    // getSingle(id, setSingle);
   }, [id]);
 
   const goBack = () => {
@@ -22,7 +22,7 @@ const Detail = (props) => {
   };
 
   const edit = () => {
-    editSingleTask(single, value, setSingle);
+    // editSingleTask(single, value, setSingle);
   };
 
   const status = completed ? (
@@ -49,7 +49,7 @@ const Detail = (props) => {
               type="button"
               className="waves-effect waves-light btn-small deleteColor"
               onClick={() => {
-                deleteSingleTask(single);
+                // deleteSingleTask(single);
                 goBack();
               }}
             >
@@ -58,14 +58,14 @@ const Detail = (props) => {
           </span>
         </div>
       </div>
-      <Form
+      {/* <Form
         isDetail={detail}
         setSingleValue={setValue}
         singleTitle={title}
         mainPage={goBack}
         editSingle={edit}
         singleTask={single}
-      />
+      /> */}
     </div>
   );
 };

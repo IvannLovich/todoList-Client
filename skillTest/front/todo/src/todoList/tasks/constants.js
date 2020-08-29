@@ -1,0 +1,9 @@
+export const NAME = 'tasks';
+
+export const FETCH_TASKS = `${NAME}/FETCH_TASKS`;
+export const FETCH_TASKS_SUCCESS = `${NAME}/FETCH_TASKS_SUCCESS`;
+export const FETCH_TASKS_FAIL = `${NAME}/FETCH_TASKS_FAIL`;
+
+export const CREATE_TASK = `${NAME}/CREATE_TASK`;
+export const CREATE_TASK_SUCCESS = `${NAME}/CREATE_TASK_SUCCESS`;
+export const CREATE_TASK_FAIL = `${NAME}/CREATE_TASK_FAIL`;

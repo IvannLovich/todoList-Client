@@ -1,7 +1,6 @@
 import React from 'react';
 import Tasks from '../tasks/Tasks';
 
-
 const Main = () => {
   return (
     <div className="todo-app container">
@@ -9,6 +8,6 @@ const Main = () => {
       <Tasks />
     </div>
   );
-}
+};
 
 export default Main;
