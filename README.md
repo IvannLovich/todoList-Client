@@ -32,9 +32,7 @@ pip3 install django | pip install django
 pip3 install djangorestframework | pip install djangorestframework
 ```
 
-
-
-By last we'll create Django's superuser: 
+By last we'll create Django's superuser:
 
 ```
  ~/ensolvers/skillTest/back/abm
@@ -46,9 +44,7 @@ Run:
  python manage.py createsuperuser
 ```
 
-
 Now in the same path excute
-
 
 ```
 python manage.py runserver
@@ -56,12 +52,10 @@ python manage.py runserver
 
 Perfect you just ran the backend server!
 
-
-
 After this, in a new terminal we'll move to:
 
 ```
-~/ensolvers/skillTest/front/todo
+~/todoList-Client/skillTest/front/todo
 ```
 
 Inside here we are going to install the node_modules dependencies:
