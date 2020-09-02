@@ -33,7 +33,7 @@ pip3 install djangorestframework | pip install djangorestframework
 By last we'll create Django's superuser:
 
 ```
- ~/ensolvers/skillTest/back/abm
+ ~/todoList-Client/skillTest/back/abm
 ```
 
 Run:
