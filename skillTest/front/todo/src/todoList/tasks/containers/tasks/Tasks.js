@@ -1,29 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Button, Input } from 'antd';
-// import {
-//   getAll,
-//   add,
-//   changeToTrue,
-//   changeToFalse,
-//   deleteTask,
-// } from '../../Api';
-
 import './Tasks.css';
 import tasks from '../..';
 
 const Tasks = ({ showTasks, listOfTasks, addTask }) => {
-  // const [todoList, setTodoList] = useState([]);
   const [value, setValue] = useState('');
   const [isTaskLoad, setIsTaskLoad] = useState(false);
 
   useEffect(() => {
     showTasks();
   }, [showTasks]);
-
-  // const submit = () => {
-  // add(value, setTodoList, todoList);
-  // };
 
   const tds = listOfTasks.length ? (
     listOfTasks.map((element) => {
@@ -69,21 +56,21 @@ const Tasks = ({ showTasks, listOfTasks, addTask }) => {
     <p className="center"> No hay tareas cargadas </p>
   );
 
+  const clearInput = (target) => target.value === value && (target.value = '');
+
   return (
     <div className="todo-app container">
       <div className="todos collection">{tds}</div>
       <Input
         placeholder="Enter a task"
-        defaultValue={isTaskLoad && ''}
         onChange={(event) => setValue(event.target.value)}
         onPressEnter={() =>
           addTask({ title: value }).then(() => {
             showTasks();
-            setIsTaskLoad(true);
+            setValue('');
           })
         }
       />
-      {/* <Form val={value} setVal={setValue} saveTask={submit} /> */}
     </div>
   );
 };

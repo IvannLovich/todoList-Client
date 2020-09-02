@@ -1,7 +1,5 @@
 ## Todo List
 
-This is the skill test for developer positions in Ensolvers.
-
 ### Considerations
 
 Ours recomendations is you create a Python' virtual enviroment so you shouldn't install all libraries localy. The application has to folder, "back" where is the backend and "front" where is the user interface
@@ -32,9 +30,7 @@ pip3 install django | pip install django
 pip3 install djangorestframework | pip install djangorestframework
 ```
 
-
-
-By last we'll create Django's superuser: 
+By last we'll create Django's superuser:
 
 ```
  ~/ensolvers/skillTest/back/abm
@@ -46,17 +42,13 @@ Run:
  python manage.py createsuperuser
 ```
 
-
 Now in the same path excute
-
 
 ```
 python manage.py runserver
 ```
 
 Perfect you just ran the backend server!
-
-
 
 After this, in a new terminal we'll move to:
 
