@@ -53,7 +53,7 @@ Perfect you just ran the backend server!
 After this, in a new terminal we'll move to:
 
 ```
-~/ensolvers/skillTest/front/todo
+~/todoList-Client/skillTest/front/todo
 ```
 
 Inside here we are going to install the node_modules dependencies:
